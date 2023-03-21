@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Metal price prediction</string>
+    <string name="header">График цены</string>
+    <string name="draw_button">Построить график</string>
+    <string name="subheader">График отражает прогноз цены на год</string>
+    <string name="model1">Никель</string>
+    <string name="model2">Кобальт</string>
+    <string name="model3">Молибден</string>
+    <string name="Back">Назад</string>
+</resources>
