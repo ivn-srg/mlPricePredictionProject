@@ -1,22 +1,33 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Color;
+import android.graphics.Matrix;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toolbar;
+import android.widget.TextView;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.github.mikephil.charting.listener.ChartTouchListener;
+import com.github.mikephil.charting.listener.OnChartGestureListener;
 
 
-public class GraphCobaltActivity extends Activity {
+public class GraphCobaltActivity extends AppCompatActivity {
 
     private LineChart chart;
 
@@ -25,14 +36,25 @@ public class GraphCobaltActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph);
 
+        // Получить ссылку на ActionBar
+        ActionBar actionBar = getSupportActionBar();
+
+// Установить цвет фона ActionBar
+        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.green)));
+
+// Установить иконку кнопки "вверх"
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        // Установить цвет текста заголовка
+        actionBar.setTitle(R.string.app_name);
+
 //        chart = findViewById(R.id.chart);
 //        chart = new LineChart(this);
 //        // chart.addView(chart);
         Button button = findViewById(R.id.draw_button);
-        Button btnReturn = findViewById(R.id.btnReturn);
         chart = findViewById(R.id.chart);
 
         button.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint({"SetTextI18n", "DefaultLocale"})
             @Override
             public void onClick(View v) {
                 // Массив координат точек
@@ -41,12 +63,23 @@ public class GraphCobaltActivity extends Activity {
                     float val = (float) (Math.random() * 10);
                     entriesFirst.add(new Entry(i, val));
                 }
-//                entriesFirst.add(new Entry(1f, 5f));
-//                entriesFirst.add(new Entry(2f, 2f));
-//                entriesFirst.add(new Entry(3f, 1f));
-//                entriesFirst.add(new Entry(4f, -3f));
-//                entriesFirst.add(new Entry(5f, 4f));
-//                entriesFirst.add(new Entry(6f, 1f));
+                float maxVal = Float.MIN_VALUE;
+                float minVal = Float.MAX_VALUE;
+                for (Entry entry : entriesFirst) {
+                    if (entry.getY() > maxVal) {
+                        maxVal = entry.getY();
+                    }
+                    if (entry.getY() < minVal) {
+                        minVal = entry.getY();
+                    }
+                }
+
+                TextView max_value = findViewById(R.id.textViewMaxPrice);
+                max_value.setText("Максимальная цена за период: " + String.format("%.2f", maxVal) + " долл./т");
+                TextView min_value = findViewById(R.id.textViewMinPrice);
+                min_value.setText("Минимальная цена за период: " + String.format("%.2f", minVal) + " долл./т");
+
+
 
 //                chart.getDescription().setEnabled(false);
                 chart.setTouchEnabled(true);
@@ -58,6 +91,34 @@ public class GraphCobaltActivity extends Activity {
 
                 // На основании массива точек создадим первую линию с названием
                 LineDataSet datasetFirst = new LineDataSet(entriesFirst, "Прогнозируемая цена");
+                chart.setNoDataText("Построите график для отображения");
+                chart.setNoDataTextColor(R.color.green);
+
+                // Макс.мин. цены на графике
+                float maxX = chart.getHighestVisibleX();
+
+                // Получаем максимальное значение на оси Y
+                float maxY = maxVal; // chart.getAxisLeft().getAxisMaximum();
+
+                // Добавляем вертикальную линию для отображения максимальной цены
+                LimitLine maxLimitLine = new LimitLine(maxY, "Максимальная цена");
+                maxLimitLine.setLineColor(Color.RED);
+                maxLimitLine.setLineWidth(2f);
+                chart.getAxisLeft().addLimitLine(maxLimitLine);
+
+                // Получаем координаты на оси X для точки с минимальной ценой
+                // float minX = chart.getLowestVisibleX();
+
+                // Получаем минимальное значение на оси Y
+                float minY = minVal; // chart.getAxisLeft().getAxisMinimum();
+
+                // Добавляем вертикальную линию для отображения минимальной цены
+                LimitLine minLimitLine = new LimitLine(minY, "Минимальная цена");
+                minLimitLine.setLineColor(Color.GREEN);
+                minLimitLine.setLineWidth(2f);
+                chart.getAxisLeft().addLimitLine(minLimitLine);
+
+
                 // График будет заполненным
                 datasetFirst.setDrawFilled(true);
                 datasetFirst.setDrawIcons(false);
@@ -76,8 +137,11 @@ public class GraphCobaltActivity extends Activity {
                 left.setSpaceTop(30);
                 left.setSpaceBottom(30);
                 chart.getAxisRight().setEnabled(false); // no right axis
-                chart.setNoDataText("Построите график для отображения");
-                chart.setNoDataTextColor(R.color.white);
+
+                // Увеличиваем масштаб
+                chart.getViewPortHandler().setMaximumScaleY(10f);
+                chart.getViewPortHandler().setMaximumScaleX(10f);
+
 
                 // Линии графиков соберем в один массив
                 ArrayList<ILineDataSet> dataSets = new ArrayList();
@@ -99,11 +163,7 @@ public class GraphCobaltActivity extends Activity {
             }
         });
 
-        btnReturn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                finish();
-            }
-        });
+
 
 //        // Создаем данные для графика
 //        ArrayList<Entry> values = new ArrayList<>();
@@ -139,5 +199,10 @@ public class GraphCobaltActivity extends Activity {
 //        chart.animateY(500);
 
 
+    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

@@ -7,4 +7,6 @@
     <string name="model2">Кобальт</string>
     <string name="model3">Молибден</string>
     <string name="Back">Назад</string>
+    <string name="max_value">Максимальная цена:</string>
+    <string name="min_value">Минимальная цена:</string>
 </resources>
