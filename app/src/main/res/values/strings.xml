@@ -9,4 +9,8 @@
     <string name="Back">Назад</string>
     <string name="max_value">Максимальная цена:</string>
     <string name="min_value">Минимальная цена:</string>
+    <string name="tvDollar">1200</string>
+    <string name="tvNickel">1000</string>
+    <string name="tvMolybdenum">1223</string>
+    <string name="tvCobalt">1234</string>
 </resources>
