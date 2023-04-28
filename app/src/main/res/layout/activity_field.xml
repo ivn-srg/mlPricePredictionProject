@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            android:textColor="@color/material_dynamic_neutral50">
+
+<!--            <TextView-->
+<!--                android:id="@+id/oil_price"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginBottom="20dp"-->
+<!--                android:fontFamily="@font/abril_fatface"-->
+<!--                android:text="Введите параметры"-->
+<!--                android:textSize="20sp" />-->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_name"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                app:boxStrokeColor="@color/blue"
+                app:endIconDrawable="@drawable/ic_clear"
+                app:endIconMode="custom"
+                app:helperText="Введите стоимость изготовления катализатора ГО ДТ">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/el_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="ГО ДТ"
+                    android:cursorVisible="true"
+                    android:textCursorDrawable="@drawable/cursor"
+                    android:imeOptions="actionNext"
+                    android:inputType="numberDecimal"
+                    android:maxLength="15" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_name1"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                app:boxStrokeColor="@color/blue"
+                app:endIconDrawable="@drawable/ic_clear"
+                app:endIconMode="custom"
+                app:helperText="Введите расходная норму кобальта">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/el_name1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Норма Co"
+                    android:cursorVisible="true"
+                    android:textCursorDrawable="@drawable/cursor"
+                    android:imeOptions="actionNext"
+                    android:inputType="numberDecimal"
+                    android:maxLength="15" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_name2"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                app:boxStrokeColor="@color/blue"
+                app:endIconDrawable="@drawable/ic_clear"
+                app:endIconMode="custom"
+                app:helperText="Введите расходную норму карбоната кобальта">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/el_name2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Co₂(CO₃)₃"
+                    android:cursorVisible="true"
+                    android:textCursorDrawable="@drawable/cursor"
+                    android:imeOptions="actionNext"
+                    android:inputType="numberDecimal"
+                    android:maxLength="15" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_name3"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                app:boxStrokeColor="@color/blue"
+                app:endIconDrawable="@drawable/ic_clear"
+                app:endIconMode="custom"
+                app:helperText="Введите расходную норму молибдена">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/el_name3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Норма Mo"
+                    android:cursorVisible="true"
+                    android:textCursorDrawable="@drawable/cursor"
+                    android:imeOptions="actionNext"
+                    android:inputType="numberDecimal"
+                    android:maxLength="15" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_name4"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                app:boxStrokeColor="@color/blue"
+                app:endIconDrawable="@drawable/ic_clear"
+                app:endIconMode="custom"
+                app:helperText="Введите расходную норму оксида молибдена">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/el_name4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Норма MoO₃"
+                    android:textColorHighlight="@color/blue"
+                    android:cursorVisible="true"
+                    android:textCursorDrawable="@drawable/cursor"
+                    android:imeOptions="actionDone"
+                    android:inputType="numberDecimal"
+                    android:maxLength="15" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/next_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/blue"
+                android:insetLeft="4dp"
+                android:insetTop="6dp"
+                android:insetRight="4dp"
+                android:insetBottom="6dp"
+                android:text="Далее"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                app:cornerRadius="12dp"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

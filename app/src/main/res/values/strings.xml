@@ -1,16 +1,18 @@
 <resources>
-    <string name="app_name">Metal price prediction</string>
+    <string name="app_name">Catalyst price prediction</string>
     <string name="header">График цены</string>
     <string name="draw_button">Построить график</string>
-    <string name="subheader">График отражает прогноз цены на год</string>
+    <string name="subheader">График отражает прогноз цены на полгода</string>
     <string name="model1">Никель</string>
     <string name="model2">Кобальт</string>
     <string name="model3">Молибден</string>
     <string name="Back">Назад</string>
+    <string name="tvCobalt">X $</string>
+    <string name="tvDollar">X ₽</string>
+    <string name="tvMolybdenum">X $</string>
+    <string name="tvNickel">X $</string>
     <string name="max_value">Максимальная цена:</string>
+
     <string name="min_value">Минимальная цена:</string>
-    <string name="tvDollar">1200</string>
-    <string name="tvNickel">1000</string>
-    <string name="tvMolybdenum">1223</string>
-    <string name="tvCobalt">1234</string>
+
 </resources>
